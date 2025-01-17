@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Interactive</title>
+        <style>
+            body {
+                text-align: center;
+            }
+            p {
+                color: white;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>Dynamically changing content</h1>
+        <h3>Enter Your Name</h3>
+        <input id="name" type="text">
+        <button type="button" onclick="EnterName()">Submit</button>
+        <script>
+            function EnterName() {
+                let user = document.getElementById("name").value;
+                document.getElementById("demo").innerHTML =
+                    "Welcome to my website, " + user + "!";
+            }
+        </script>
+        <h3>Randomize the Color</h3>
+        <button type="button" onclick="changeColor()">Color</button>
+        <script>
+            function changeColor() {
+                // Generating random color each time
+                let color = "#" + (Math.random() * 16777215 | 0).toString(16);
+                $("body").css("background-color", color);
+            }w
+        </script>
+        <p id="demo"></p>
+    </body>
+</html>
