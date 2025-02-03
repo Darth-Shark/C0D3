@@ -20,17 +20,23 @@
             function ShowScript() {//Show more content, then change state of button.
                 document.getElementById("1").innerHTML = "My name is Michael Rollins. I am seventeen.";
                 document.getElementById("2").innerHTML = "This was made for Web Design / Web App Development 2 (BES)";
+                const x = 14;
+                const y = 3;
+                let z = x * y;
+                document.getElementById("3").innerHTML = "I did some math and got " + z + ".";
                 document.getElementById("button").onclick = HideScript; //This took a minute and a tutorial to figure out, but I got pretty close on my own! All I was missing was the proper formatting of "HideScript".
                 document.getElementById("button").innerHTML = "Hide";
             }
             function HideScript() {//Show less content, then change state  of button.
                 document.getElementById("1").innerHTML = "";
                 document.getElementById("2").innerHTML = "";
+                document.getElementById("3").innerHTML = "";
                 document.getElementById("button").onclick = ShowScript;
                 document.getElementById("button").innerHTML = "Show";
             }
         </script>
         <p id="1"></p>
         <p id="2"></p>
+        <p id="3"></p>
     </body>
 </html>
