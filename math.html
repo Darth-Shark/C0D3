@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Interactive</title>
+        <style>
+            body {
+                text-align: center;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>QUICK MATHS</h1>
+        <h3>Add Number Here</h3>
+        <input id="user" type="number">
+        <button type="button" onclick="EnterNum()" id="input">Add</button>
+        <script>
+            function EnterNum() {
+                let user = 0;
+                let rand = 10;
+                let result = 0;
+                user = document.getElementById("user").value;
+                let input = document.getElementById("input").innerHTML;
+                rand = Math.floor(Math.random(Date) * 11);
+                switch(input) {
+                    case "Add": operation = "+"; result = user - - rand; break;
+                    case "Subtract": operation = "-"; result = user - rand; break;
+                    case "Multiply": operation = "*"; result = user * rand; break;
+                    case "Divide": operation = "/"; result = user / rand; break;
+                    default: operation = "ERROR: invalid operator.";
+                }
+                document.getElementById("math").innerHTML =
+                    "Math: " + user + " " + operation + " " + rand + " = " + result + ".";
+            }
+            function MathType(type) {
+                switch(type) {
+                    case 1: type = "Add"; break;
+                    case 2: type = "Subtract"; break;
+                    case 3: type = "Multiply"; break;
+                    case 4: type = "Divide"; break;
+                }
+                document.getElementById("input").innerHTML = 
+                    type;
+            }
+        </script>
+        <h3>Choose Operation</h3>
+        <button type="button" onclick="MathType(1)">Addition</button>
+        <button type="button" onclick="MathType(2)">Subtraction</button>
+        <button type="button" onclick="MathType(3)">Multiplication</button>
+        <button type="button" onclick="MathType(4)">Division</button>
+        <p id="math">Math: 1 + 1 = 2.</p>
+    </body>
+</html>
