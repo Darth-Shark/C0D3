@@ -8,39 +8,33 @@
             }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-            var num1 = -1;
-            var num2 = -1;
-            var sum = 0;
+            var sum = 0;//Initializing the global variable.
+//            var user = 0;
+//            var total = 0; //Initializing these two variables doesn't seem to have an effect on the program's execution.
         </script>
     </head>
     <body>
         <h1>Tabulator</h1>
-        <h3>Input two numbers, wait, then input "-1"</h3>
-        <input id="user" type="number">
-        <button type="button" onclick="EnterNum()" id="input">Enter</button>
+        <h3>Input a number to add it to the total, input "0" to reset.</h3>
+        <!--I chose to use 0 instead of -1 for resetting, since that way you can also subtract numbers if you wish.-->
+        <input id="user" type="number"><!--value defaults to 0, usefully-->
+        <button type="button" onclick="EnterNum()" id="input">Enter</button><!--This id is never used.-->
         <script>
             function EnterNum() {
                 user = document.getElementById("user").value;
-                if (user!==-1) {
-                    if (num1==-1) {
-                        num1 = user;
-                    } else {
-                        num2 = user;
-                        add();
-                    }
-                }
-
-            }
-            function add() {
-                user = document.getElementById("user").value;
-                while (user!==-1) {
-                    user = document.getElementById("user").value;
-                    sum = sum + num2 + num1;
-                }
+                if (user==0) {
                     document.getElementById("output").innerHTML = 
-                        "The total is " + sum;
+                        "The value has been reset.";
+                        sum = 0;//For some reason, you have to reset it before it works the first time.
+                } else {
+                    total = sum - - user;//Even with all the variables being initialized as numbers, I still need to use that "- -" trick.
+                    sum = total;//A bit roundabout, but it works.
+                    document.getElementById("output").innerHTML = 
+                        "The current total is " + sum;
+                }
             }
         </script>
-        <p id="output"></p>
+        <p id="output" onload="EnterNum()">Note: due to an unkown error, you must press enter once to reset the program before it will work.</p>
+        <!--Why doesn't this onload fix the issue?-->
     </body>
 </html>
