@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Interactive</title>
+        <style>
+            body {
+                text-align: center;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+            var num1 = -1;
+            var num2 = -1;
+            var sum = 0;
+        </script>
+    </head>
+    <body>
+        <h1>Tabulator</h1>
+        <h3>Input two numbers, wait, then input "-1"</h3>
+        <input id="user" type="number">
+        <button type="button" onclick="EnterNum()" id="input">Enter</button>
+        <script>
+            function EnterNum() {
+                user = document.getElementById("user").value;
+                if (user!==-1) {
+                    if (num1==-1) {
+                        num1 = user;
+                    } else {
+                        num2 = user;
+                        add();
+                    }
+                }
+
+            }
+            function add() {
+                user = document.getElementById("user").value;
+                while (user!==-1) {
+                    user = document.getElementById("user").value;
+                    sum = sum + num2 + num1;
+                }
+                    document.getElementById("output").innerHTML = 
+                        "The total is " + sum;
+            }
+        </script>
+        <p id="output"></p>
+    </body>
+</html>
