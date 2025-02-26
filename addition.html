@@ -8,7 +8,7 @@
             }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-            var sum = 0;//Initializing the global variable.
+//            var sum = 0;//Initializing the global variable.
 //            var user = 0;
 //            var total = 0; //Initializing these two variables doesn't seem to have an effect on the program's execution.
         </script>
@@ -20,7 +20,11 @@
         <input id="user" type="number"><!--value defaults to 0, usefully-->
         <button type="button" onclick="EnterNum()" id="input">Enter</button><!--This id is never used.-->
         <script>
-            function EnterNum() {
+            function EnterNum() {/* Add a forward slash to uncomment the below code.
+                var sum;//This will always return NaN
+                if (sum==NaN) {
+                    sum = 0;
+                }/*Comment leak prevention.*/
                 user = document.getElementById("user").value;
                 if (user==0) {
                     document.getElementById("output").innerHTML = 
