@@ -1,5 +1,2 @@
-i = 10;
-while (i>0) {
-    console.log(Math.floor(Math.random() * 10));
-    i--
-}
+let i = (Math.random() * 2 | 0);
+    console.log(i);

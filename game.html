@@ -19,18 +19,25 @@
         <br>
         <br>
         <p id="0" onclick="bootup()" title="Your adventure begins."></p>
-        <p id="coins" title="This is how many coins you have."></p>
+<!--        <p id="coins" onclick="alert('This is how many coins you have.')"></p> 
+<!-Why doesn't this work? I need to figure out variable scope. . .-->
         <p id="1" onclick="slime()"></p>
         <p id="2" onclick="alert('Weak slimey boi, 3 hp')"></p>
         <br>
         <p id="3" onclick="douball()"></p>
         <p id="4" onclick="alert('It has two halves, but only one is vulnerable, 5 hp')"></p>
         <br>
-        <p id="5" ></p>
+        <p id="5" onclick="robutton()"></p>
+        <p id="6" onclick="alert('Dispite being a robot, its weakness is math, 7 hp')"></p>
+        <br>
+        <p id="7" onclick="vocabra()"></p>
+        <p id="8" onclick="alert('A very ssstrange creature, it likes dictation, 10 hp')"></p>
+        <br>
+        <p id="9" onclick="alert('a shame, really')"></p>
 
         <script>
             function attack() {
-                damage = 1;
+                damage = 1;//Currently no way to increase this.
                 alert("You hit for " + damage  + " damage!");
                 return damage;
             }
@@ -42,14 +49,14 @@
                 document.getElementById("0").innerHTML = 
                 "";
                 document.getElementById("1").innerHTML = 
-                "/ '' \\";
+                "/ '' \\";//The backslash indicates a command, such as starting a new line. Two backslashes indicated the backslash as a character.
                 document.getElementById("2").innerHTML = 
                 "A slime approaches!";
+                document.getElementById("coins").innerHTML = 
+                "0";
             };
             function slime() {
-                hp=1;//3;
-                document.getElementById("2").innerHTML = 
-                "You attack the Slime!";
+                hp=3;
                 while(hp>0) {
                     alert("Attack the slime!");
                     hp = hp - attack();
@@ -61,9 +68,9 @@
                     document.getElementById("3").innerHTML = 
                     "O*O";
                     document.getElementById("4").innerHTML = 
-                    "A Dou-Ball approaches!";
+                    "A Dou-Ball rolls up!";
                 }
-                coins(1);
+                coins(rand(2)+1);
             };
             function douball() {
                 hp = 5;
@@ -75,43 +82,97 @@
                         } else {
                             alert("You missed!");
                         }
-                        switch(hp) {
-                            case 4: break;
-                            default: i = 1;
-                        }
                     } else {
                         if(confirm("Attack the Duo-Ball right!")) {
                             alert("You missed!");
                         } else {
                             hp = hp - attack();
                         }
-                        switch(hp) {
-                            case 1: break;
-                            default: i = 0;
-                        }
                     };
+                    i = rand(2);
                 };
                 document.getElementById("4").innerHTML = 
                 "You have defeated Duo-Ball!";
-                coins(4);
+                check = document.getElementById("5").innerHTML;
+                if (check=="") {
+                    document.getElementById("5").innerHTML = 
+                    ".<*#*>.";
+                    document.getElementById("6").innerHTML = 
+                    "A Robutton beeps aggresively!";
+                }
+                coins(rand(4)+1);
+            };
+            function robutton() {
+                hp = 7;
+                i = 0;
+                while (hp>0) {
+                    a = rand(6);
+                    b = rand(6);
+                    math = rand(2);
+                    if (math==1) {
+                        c = a - - b;
+                        d = prompt("What is " + a + " + " + b + "?");
+                    } else {
+                        c = a - b;
+                        d = prompt("What is " + a + " - " + b + "?");
+                    };
+                    if (d==c) {
+                        hp = hp - attack();
+                    } else {
+                        alert("Incorrect!");
+                    }
+                };
+                document.getElementById("6").innerHTML = 
+                "You have defeated Robutton!";
+                check = document.getElementById("7").innerHTML;
+                if (check=="") {
+                    document.getElementById("7").innerHTML = 
+                    "~~==K<";
+                    document.getElementById("8").innerHTML = 
+                    "A Vocabra slithers forward!";
+                }
+                coins(rand(6)+3);
+            };
+            function vocabra() {
+                hp = 10;
+                i = 0;
+                while (hp>0) {
+                    i = rand(11);
+                    if (i==10) {
+                        i = rand(11);
+                    };
+                    switch (i) {
+                        case 0: word="slither"; break;
+                        case 1: word="scales"; break;
+                        case 2: word="snake"; break;
+                        case 3: word="hissss"; break;
+                        case 4: word="coil"; break;
+                        case 5: word="rattle"; break;
+                        case 6: word="venom"; break;
+                        case 7: word="fang"; break;
+                        case 8: word="viper"; break;
+                        case 9: word="sssssss"; break;
+                        default: word = "danger noodle";//easter egg, 1/100 chance.
+                    };
+                    answer = prompt("Thiss ssssnake ssayss " + word + ". . .");
+                    if (answer==word) {
+                        hp = hp - attack();
+                    } else {
+                        alert("That isss wrong.");
+                    }
+                };
+                document.getElementById("8").innerHTML = "You have defeated vocabra!";
+                document.getElementById("9").innerHTML = "The game is actually over now.";
+                coins(rand(5)+rand(5)+5);
             };
             function coins(add){
                 coin = document.getElementById("coin").innerHTML;
-                if (coin="") {
-                    document.getElementById("coin").innerHTML = 
-                    add;
-                } else {
-                    a = parseInt(coin);
-                    b = parseInt(add);
-                    document.getElementById("coin").innerHTML = 
-                    a - - b;
-                }
+                document.getElementById("coin").innerHTML = coin - - add;
             };
-            function rand() {
-                i = Date.now()
-                i = parseInt(i);
-                
-            }
+            function rand(range) {//This took longer than it needed to.
+                let i = (Math.random() * range | 0);
+                return i;
+            };
         </script>
     </body>
 </html>
