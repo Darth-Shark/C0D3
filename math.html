@@ -11,17 +11,19 @@
     </head>
     <body>
         <h1>QUICK MATHS</h1>
-        <h3>Add Number Here</h3>
-        <input id="user" type="number">
+        <h3>Add Numbers Here</h3>
+        <input id="user1" type="number">
+        <input id="user2" type="number">
         <button type="button" onclick="EnterNum()" id="input">Add</button>
         <script>
             function EnterNum() {
                 let user = 0;
-                let rand = 10;
+                let rand = 0;
                 let result = 0;
-                user = document.getElementById("user").value;
+                user = document.getElementById("user1").value;
+                user = document.getElementById("user2").value;/*
                 let input = document.getElementById("input").innerHTML;
-                rand = Math.floor(Math.random(Date) * 11);
+                rand = Math.floor(Math.random(Date) * 11);//*/
                 switch(input) {
                     case "Add": operation = "+"; result = user - - rand; break;
                     case "Subtract": operation = "-"; result = user - rand; break;
