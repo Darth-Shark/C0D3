@@ -19,8 +19,9 @@
         <br>
         <br>
         <p id="0" onclick="bootup()" title="Your adventure begins."></p>
-<!--        <p id="coins" onclick="alert('This is how many coins you have.')"></p> 
-<!-Why doesn't this work? I need to figure out variable scope. . .-->
+        <p id="coins" onclick="coins(0)"></p> 
+        <p id="sword" onclick="sword()"></p> 
+<!--Why doesn't this work? I need to figure out variable scope. . . Update: I figured it out.-->
         <p id="1" onclick="slime()"></p>
         <p id="2" onclick="alert('Weak slimey boi, 3 hp')"></p>
         <br>
@@ -33,27 +34,81 @@
         <p id="7" onclick="vocabra()"></p>
         <p id="8" onclick="alert('A very ssstrange creature, it likes dictation, 10 hp')"></p>
         <br>
-        <p id="9" onclick="alert('a shame, really')"></p>
+        <p id="9" onclick="tank()"></p>
+        <p id="10" onclick="alert('A flippin tank bringin the pain, has a weak point, 13 hp, 1 armour')"></p>
+        <br>
+        <p id="11" onclick="alert('A shame, really.')"></p>
 
         <script>
+            let money = 0;//How did I miss this as being how to get variable scope to work?
+            let damage = 10;//I found out how to increase this.
+            let thereisnogame = true;
             function attack() {
-                damage = 1;//Currently no way to increase this.
                 alert("You hit for " + damage  + " damage!");
                 return damage;
             }
+            function sword() {
+                switch (damage) {
+                    case 1:
+                    if (confirm("Upgrade to Bronze Shortsword for 10 coins.")) {
+                        if (money>9) {
+                            document.getElementById("sword").innerHTML = 
+                            "Weapon: Copper shortsword";
+                            money = money - 10;
+                            damage++
+                        } else {
+                            alert("Insufficient coins!");
+                        }
+                    }
+                    break;
+                    case 2: 
+                    if (confirm("Upgrade to Iron Sword for 25 coins.")) {
+                        if (money>24) {
+                            document.getElementById("sword").innerHTML = 
+                            "Weapon: Iron Sword";
+                            money = money - 25;
+                            damage++
+                        } else {
+                            alert("Insufficient coins!");
+                        }
+                    }
+                    break;
+                    case 3:
+                    if (confirm("Upgrade to Steel Greatword for 60 coins.")) {
+                        if (money>24) {
+                            document.getElementById("sword").innerHTML = 
+                            "Weapon: Steel Greatword";
+                            money = money - 60;
+                            damage++
+                        } else {
+                            alert("Insufficient coins!");
+                        }
+                    }
+                    break;
+                    case 4: alert("You have already obtained the strongest sword; could you even lift a bigger one?"); break;
+                    default: alert("What have you done.")
+                }
+            }
             function start() {
-                document.getElementById("0").innerHTML = 
-                "Press start.";
+                if (thereisnogame) {
+                    document.getElementById("0").innerHTML = 
+                    "Press start.";
+                    thereisnogame=false;
+                } else {
+                    alert("I'MA FIRING MAH LAZER");
+                }
             };
             function bootup() {
                 document.getElementById("0").innerHTML = 
                 "";
                 document.getElementById("1").innerHTML = 
-                "/ '' \\";//The backslash indicates a command, such as starting a new line. Two backslashes indicated the backslash as a character.
+                "/ '' \\";//The backslash indicates a command, such as starting a new line. Two backslashes indicates the backslash as a character.
                 document.getElementById("2").innerHTML = 
                 "A slime approaches!";
                 document.getElementById("coins").innerHTML = 
-                "0";
+                "$$$$$";
+                document.getElementById("sword").innerHTML = 
+                "Weapon: Copper Knife";
             };
             function slime() {
                 hp=3;
@@ -100,7 +155,7 @@
                     document.getElementById("6").innerHTML = 
                     "A Robutton beeps aggresively!";
                 }
-                coins(rand(4)+1);
+                coins(rand(3)+2);
             };
             function robutton() {
                 hp = 7;
@@ -162,12 +217,55 @@
                     }
                 };
                 document.getElementById("8").innerHTML = "You have defeated vocabra!";
-                document.getElementById("9").innerHTML = "The game is actually over now.";
+                document.getElementById("10").innerHTML = "An Actual Tank appears!";
+                document.getElementById("9").innerHTML = " /||||\\___<br>\\||||/==-";
                 coins(rand(5)+rand(5)+5);
             };
+            function tank() {
+                hp = 15;
+                flee = damage;
+                i = rand(5);
+                crit=false
+                while (hp>0) {
+                    target = prompt("You can hit the barrel, treads, bow, hatch or fender!");
+                    switch (target) {
+                        case "barrel": if(i==0) {crit=true; break}
+                        case "treads": if(i==1) {crit=true; break;}
+                        case "bow": if(i==2) {crit=true; break;}
+                        case "hatch": if(i==3) {crit=true; break;}
+                        case "fender": if(i==4) {crit=true; break;}
+                        default: alert("You missed it's weak spot. The tank attacks!");
+                    }
+                    if (crit) {
+                        hp = hp + 1 - attack();
+                        i = rand(5);
+                    } else {
+                        miss=true;
+                        if (rand(1)==0) {miss=flase}
+                        if(confirm("Dodge left or right?")==miss) {
+                            hp = hp + 1 - attack();
+                        } else {
+                            alert("The tank hit you!");
+                            flee--
+                            if (flee==0) {
+                                alert("You are forced to retreat.");
+                            }
+                        }
+                    }
+                    crit=false;
+                };
+                document.getElementById("10").innerHTML = "You have defeated an actual tank!";
+                document.getElementById("11").innerHTML = "You win the game!";
+                coins(rand(4)+rand(4)+rand(4)+6);
+            };
             function coins(add){
-                coin = document.getElementById("coin").innerHTML;
-                document.getElementById("coin").innerHTML = coin - - add;
+                if (add==0) {
+//This functions serves a double purpose, updating a value and reading it out. Additionally, this serves as an error message.
+                    alert("You have " + money + " coins.")
+                } else {
+                    money = money + add;
+                    alert("You got " + add + " coins!");
+                }
             };
             function rand(range) {//This took longer than it needed to.
                 let i = (Math.random() * range | 0);
