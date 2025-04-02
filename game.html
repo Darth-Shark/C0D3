@@ -75,7 +75,7 @@
                     break;
                     case 3:
                     if (confirm("Upgrade to Steel Greatword for 60 coins.")) {
-                        if (money>24) {
+                        if (money>59) {
                             document.getElementById("sword").innerHTML = 
                             "Weapon: Steel Greatword";
                             money = money - 60;
@@ -241,22 +241,25 @@
                         i = rand(5);
                     } else {
                         miss=true;
-                        if (rand(1)==0) {miss=flase}
+                        if (rand(2)==0) {miss=false}
                         if(confirm("Dodge left or right?")==miss) {
                             hp = hp + 1 - attack();
                         } else {
                             alert("The tank hit you!");
-                            flee--
+                            flee--;
                             if (flee==0) {
                                 alert("You are forced to retreat.");
                             }
                         }
                     }
                     crit=false;
+                    if (flee==0) {break;}
                 };
-                document.getElementById("10").innerHTML = "You have defeated an actual tank!";
-                document.getElementById("11").innerHTML = "You win the game!";
-                coins(rand(4)+rand(4)+rand(4)+6);
+                if (flee!==0) {
+                    document.getElementById("10").innerHTML = "You have defeated an actual tank!";
+                    document.getElementById("11").innerHTML = "You win the game!";
+                    coins(rand(4)+rand(4)+rand(4)+10);
+                }
             };
             function coins(add){
                 if (add==0) {

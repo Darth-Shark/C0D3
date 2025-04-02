@@ -1,3 +1,4 @@
+<!--Originally made for Web Design 2, later updated with a bugfix.-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,7 +21,9 @@
         <input id="user" type="number"><!--value defaults to 0, usefully-->
         <button type="button" onclick="EnterNum()" id="input">Enter</button><!--This id is never used.-->
         <script>
-            function EnterNum() {/* Add a forward slash to uncomment the below code.
+            sum = 0;//Update: By adding these two lines of code, I fixed the program! I was intitializing in the wrong place
+            user = 0;
+            function EnterNum() {/* Add a forward slash to uncomment the below code. Update: This code is now vestigal.
                 var sum;//This will always return NaN
                 if (sum==NaN) {
                     sum = 0;
@@ -31,14 +34,13 @@
                         "The value has been reset.";
                         sum = 0;//For some reason, you have to reset it before it works the first time.
                 } else {
-                    total = sum - - user;//Even with all the variables being initialized as numbers, I still need to use that "- -" trick.
-                    sum = total;//A bit roundabout, but it works.
+                    sum = sum - - user;//Even with all the variables being initialized as numbers, I still need to use that "- -" trick.
+//                    sum = total; Update: the fix on lines 23 & 24 also fixes the bug that was forcing me to use this.
                     document.getElementById("output").innerHTML = 
                         "The current total is " + sum;
                 }
             }
         </script>
-        <p id="output" onload="EnterNum()">Note: due to an unkown error, you must press enter once to reset the program before it will work.</p>
-        <!--Why doesn't this onload fix the issue?-->
+        <p id="output">The current total is 0</p> <!-- Update: It works now! -->
     </body>
 </html>
