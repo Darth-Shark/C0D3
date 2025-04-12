@@ -1,0 +1,34 @@
+<!--Credit to a Stackoverflow contributer for the original fadein and fadeout functions. 
+https://stackoverflow.com/questions/6121203/how-to-do-fade-in-and-fade-out-with-javascript-and-css -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>It all began. . .</title>
+        <style>
+            body {
+                text-align: center;
+            } 
+            p {
+                color: #000000;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="myfunctions.js"></script>
+    </head>
+    <body>
+        <script>
+            function exposition(element) {
+                fade(element);
+                setTimeout(function(){element.innerhtml="Shall we?"; unfade(element)},500)
+            };
+        </script>
+        <div class="title">
+            <h1>A short time ago, in a land a few feet away. . .</h1>
+        </div>
+        <P onclick="unfade(document.getElementById('1'))">fadein test</p>
+        <P id="1" onclick="fade(this)">Fadeout test</p>
+        <P id="1" onmouseenter="fade(this)" onmouseleave="unfade(this)">fadeout and cursor</p>
+        </br>
+        <p onclick="exposition(this)">lets try something else</p>
+    </body>
+</html>

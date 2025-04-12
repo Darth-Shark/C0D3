@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Index</title>
+        <style>
+            body {
+                text-align: center;
+            } 
+            p {
+                color: #000000;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <script> 
+            function EnterEmail() {
+                let email = document.getElementById("email").value;
+                if (/@/.test(email)&&/./.test(email)) {//A very basic check.
+                    document.getElementById("1").innerHTML = "The email you have entered is " + email;
+                } else {
+                    document.getElementById("1").innerHTML = email + " is not a valid email.";//Simple error message.
+                }
+            }
+            function EnterPhone() {
+                let phone = document.getElementById("phone").value;
+                let num = phone;
+                num = num.replace("-",""); num = num.replace("-",""); num = num.replace("(",""); num = num.replace(")",""); num = num.replace("1+","");//Turning the number into a format I can do math on.
+                if ((parseInt(num)!=NaN)&&(num.length==10)) {//I don't know if those extra parentheses are necessary, but it makes it easier to read.
+                phone = phone.replace("1+","")//I doubt this line of code will matter very often. 
+                document.getElementById("2").innerHTML = "The phone number you have entered is 1+" + phone;
+                } else {
+                    document.getElementById("2").innerHTML = phone + " is not a valid phone number.";
+                }
+            }
+        </script>
+        </br>
+        <h1>Sign up for updates!</h1><!--I enjoy the contrast between these font sizes.-->
+        <h6>Disclaimer: This page does not actually store or send any data.</h6>
+        <input id="email" type="text">
+        <button type="button" onclick="EnterEmail()">Enter Email</button>
+        </br><p id="1"></p>
+        </br>
+        <input id="phone" type="text">
+        <button type="button" onclick="EnterPhone()">Enter Phone Number</button>
+        </br><p id="2"></p>
+    </body>
+</html>
