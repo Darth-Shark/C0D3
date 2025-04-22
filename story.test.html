@@ -3,7 +3,6 @@ https://stackoverflow.com/questions/6121203/how-to-do-fade-in-and-fade-out-with-
 <!DOCTYPE html>
 <html>
     <head>
-        <title>It all began. . .</title>
         <style>
             body {
                 text-align: center;
@@ -15,11 +14,22 @@ https://stackoverflow.com/questions/6121203/how-to-do-fade-in-and-fade-out-with-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="myfunctions.js"></script>
     </head>
-    <body>
+    <body onload="hoverfade(document.getElementById('hoverfade'))">
         <script>
             function exposition(element) {
                 fade(element);
-                setTimeout(function(){element.innerhtml="Shall we?"; unfade(element)},500)
+                setTimeout(function(){
+                    element.innerhtml="Shall we?"; unfade(element)
+                },2000)
+            };
+/*            document.getElementById('xxx')//maybe this works for buttons?
+                .addEventListener("click", function(event) {fade('xxx');}, {once: true});*/
+            let visible=true;
+            function xxx(element) {
+                if(visible) {
+                    fade(element);
+                    visible = false;
+                }
             };
         </script>
         <div class="title">
@@ -30,5 +40,7 @@ https://stackoverflow.com/questions/6121203/how-to-do-fade-in-and-fade-out-with-
         <P id="1" onmouseenter="fade(this)" onmouseleave="unfade(this)">fadeout and cursor</p>
         </br>
         <p onclick="exposition(this)">lets try something else</p>
+        <p id ="hoverfade">Hoverfade text</p>
+        <p id ="xxx" onclick="xxx(this)">This should only run once.</p>
     </body>
 </html>

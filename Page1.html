@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>It all began. . .</title>
+        <style> 
+            body {
+                text-align: center;
+            } 
+            p {
+                color: #000000;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="myfunctions.js"></script>
+    </head>
+    <body>
+        <script>
+            let state = 0;
+            function a() {
+                if (state==0) {
+                    state=1;
+                    fade(document.getElementById("1"))
+                    unfade(document.getElementById("2"))
+                }
+            };
+            function b() {
+                if (state==1) {
+                    state=2;
+                    fade(document.getElementById("2"))
+                    unfade(document.getElementById("3"))
+                }
+            };
+            function c() {
+                if (state==2) {
+                    state=3;
+                    fade(document.getElementById("3"))
+                    unfade(document.getElementById("4"))
+                }
+            };
+            function d() {
+                if (state==3) {
+                    state=4;
+                    document.getElementById("1").innerHTML="wip";
+                    fade(document.getElementById("4"))
+                    unfade(document.getElementById("1"))
+                    setTimeout(function(){
+                        unfade(document.getElementById("5a"));
+                        setTimeout(function(){
+                            unfade(document.getElementById("5b"));
+                            setTimeout(function(){
+                                unfade(document.getElementById("5c"));                             
+                            },500)
+                        },500)
+                    },2500)
+                }
+            };
+            function e() {
+                if(state==4) {
+                    state=5;
+                    setTimeout(function(){
+                        unfade(document.getElementById("6a"));
+                        setTimeout(function(){
+                            unfade(document.getElementById("6b"));
+                            setTimeout(function(){
+                                unfade(document.getElementById("6c"));                             
+                            },500)
+                        },500)
+                    },500)
+                }
+            }
+        </script>
+        <br/>
+        <p onclick="a()" id="1">With one click.</p>
+        <p onclick="b()" id="2" style="display:none;">This is the first line of text of this story.</p>
+        <p onclick="c()" id="3" style="display:none;">This is the second line of text of this story.</p>
+        <p onclick="d()" id="4" style="display:none;">This is the third line of text of this story.</p>
+        <div onclick="e()" id="5">
+            <p id="5a" style="display:none;">First paragraph, first sentence.</p>
+            <p id="5b" style="display:none;">First paragraph, second sentence.</p>
+            <p id="5c" style="display:none;">First paragraph, third sentence.</p>
+        </div>
+        <div onclick="f()" id="6">
+            <p id="6a" style="display:none;">Second paragraph, first sentence.</p>
+            <p id="6b" style="display:none;">Second paragraph, second sentence.</p>
+            <p id="6c" style="display:none;">Second paragraph, third sentence.</p>
+        </div>
+    </body>
+</html>

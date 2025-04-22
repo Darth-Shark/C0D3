@@ -15,17 +15,36 @@ https://stackoverflow.com/questions/6121203/how-to-do-fade-in-and-fade-out-with-
     };
     function unfade(element) {
         var op = 0.01;  // initial opacity
-//        element.style.display = 'block';
+//        element.style.display = 'block';//When placed here this makes the transition jarring.
         var timer = setInterval(function () {
             if (op >= 1){
                 clearInterval(timer);
             }
             element.style.opacity = op;
             element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-            op += op * 0.025;
-        }, 10);
+            op += op * 0.1;
+            element.style.display = 'block';
+        }, 50);
     };
 };
 {
-    
+    function hoverfade(element) {
+        if(!element.ishover) {
+            element.ishover=true;
+            var op = 1;
+            var timer = setInterval(function () {
+                element.style.opacity = op;
+                element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                if (element.matches(':hover')&&op >= 0.01) {
+                    op -= op * 0.1;
+                } else if (op <= 1) {
+                    op += op * 0.1;
+                }
+                if (op >= 1){
+//                    clearInterval(timer);
+                }
+            }, 50);
+            element.ishover=false;
+        }
+    }
 }
