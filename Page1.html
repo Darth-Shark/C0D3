@@ -40,7 +40,7 @@
             function d() {
                 if (state==3) {
                     state=4;
-                    document.getElementById("1").innerHTML="wip";
+                    document.getElementById("1").innerHTML="At the world's beginning.";
                     fade(document.getElementById("4"))
                     unfade(document.getElementById("1"))
                     setTimeout(function(){
@@ -48,7 +48,10 @@
                         setTimeout(function(){
                             unfade(document.getElementById("5b"));
                             setTimeout(function(){
-                                unfade(document.getElementById("5c"));                             
+                                unfade(document.getElementById("5c"));
+                                setTimeout(function(){
+                                    unfade(document.getElementById("5d"));                             
+                                },1500)                             
                             },500)
                         },500)
                     },2500)
@@ -62,27 +65,166 @@
                         setTimeout(function(){
                             unfade(document.getElementById("6b"));
                             setTimeout(function(){
-                                unfade(document.getElementById("6c"));                             
+                                unfade(document.getElementById("6c"));                          
                             },500)
                         },500)
                     },500)
                 }
             }
+            function f() {
+                if(state==5) {
+                    state=6;
+                    setTimeout(function(){
+                        unfade(document.getElementById("7a"));
+                        setTimeout(function(){
+                            unfade(document.getElementById("7b"));
+                            setTimeout(function(){
+                                unfade(document.getElementById("7c"));                          
+                            },1500)
+                        },500)
+                    },500)
+                }
+            }
+            function g() {
+                if(state==6) {
+                    state=7;
+                    setTimeout(function(){
+                        unfade(document.getElementById("8a"));
+                        setTimeout(function(){
+                            unfade(document.getElementById("8b"));
+                            setTimeout(function(){
+                                unfade(document.getElementById("8c"));
+                                    setTimeout(function(){
+                                    unfade(document.getElementById("8d"));
+                                    setTimeout(function(){
+                                        unfade(document.getElementById("8e"));                          
+                                    },500)
+                                },2000)
+                            },500)
+                        },1200)
+                    },500)
+                }
+            }
+            function h() {
+                if(state==7) {
+                    state=8;
+                    setTimeout(function(){
+                        unfade(document.getElementById("9a"));
+                        setTimeout(function(){
+                            unfade(document.getElementById("9b"));
+                            setTimeout(function(){
+                                unfade(document.getElementById("9c"));
+                                    setTimeout(function(){
+                                    unfade(document.getElementById("9d"));
+                                    setTimeout(function(){
+                                        unfade(document.getElementById("9e"));                          
+                                    },1200)
+                                },1500)
+                            },1500)
+                        },1500)
+                    },500)
+                }
+            }
+            function i() {
+                if(state==8) {
+                    state=9;
+                    setTimeout(function(){
+                        fade(document.getElementById("5a"));
+                        setTimeout(function(){
+                            fade(document.getElementById("5b"));
+                            setTimeout(function(){
+                                fade(document.getElementById("5c"));
+                                    setTimeout(function(){
+                                    fade(document.getElementById("5d"));
+                                    setTimeout(function(){
+                                        fade(document.getElementById("5e"));
+                                        setTimeout(function(){
+                                            fade(document.getElementById("6a"));
+                                            setTimeout(function(){
+                                                fade(document.getElementById("6b"));
+                                                setTimeout(function(){
+                                                    fade(document.getElementById("6c"));
+                                                        setTimeout(function(){
+                                                        fade(document.getElementById("7a"));
+                                                        setTimeout(function(){
+                                                            fade(document.getElementById("7b"));
+                                                            setTimeout(function(){
+                                                                fade(document.getElementById("7c"));
+                                                                setTimeout(function(){
+                                                                    fade(document.getElementById("8a"));
+                                                                        setTimeout(function(){
+                                                                        fade(document.getElementById("8b"));
+                                                                        setTimeout(function(){
+                                                                            fade(document.getElementById("8c"));
+                                                                            setTimeout(function(){
+                                                                                fade(document.getElementById("8d"));
+                                                                                setTimeout(function(){
+                                                                                    fade(document.getElementById("8e"));
+                                                                                    setTimeout(function(){
+                                                                                        fade(document.getElementById("9a"));
+                                                                                            setTimeout(function(){
+                                                                                            fade(document.getElementById("9b"));
+                                                                                            setTimeout(function(){
+                                                                                                fade(document.getElementById("9d"));
+                                                                                                setTimeout(function(){
+                                                                                                    fade(document.getElementById("9e"));
+                                                                                                },200)
+                                                                                            },200)
+                                                                                        },200)
+                                                                                    },200)
+                                                                                },200)
+                                                                            },200)                          
+                                                                        },200)
+                                                                    },200)
+                                                                },200)
+                                                            },200)
+                                                        },200)
+                                                    },200)
+                                                },200)
+                                            },200)
+                                        },200)                          
+                                    },200)
+                                },200)
+                            },200)
+                        },200)
+                    },200)
+                }
+            }
         </script>
         <br/>
-        <p onclick="a()" id="1">With one click.</p>
-        <p onclick="b()" id="2" style="display:none;">This is the first line of text of this story.</p>
-        <p onclick="c()" id="3" style="display:none;">This is the second line of text of this story.</p>
-        <p onclick="d()" id="4" style="display:none;">This is the third line of text of this story.</p>
+        <p onclick="a()" id="1">Click to continue.</p>
+        <p onclick="b()" id="2" style="display:none;">What a simple concept.</p>
+        <p onclick="c()" id="3" style="display:none;">It's not much of a plot driving force, is it? </p>
+        <p onclick="d()" id="4" style="display:none;">And yet, here we are.</p>
         <div onclick="e()" id="5">
-            <p id="5a" style="display:none;">First paragraph, first sentence.</p>
-            <p id="5b" style="display:none;">First paragraph, second sentence.</p>
-            <p id="5c" style="display:none;">First paragraph, third sentence.</p>
+            <p id="5a" style="display:none;">Welcome to my world, a world of text.</p>
+            <p id="5b" style="display:none;">It's not that much different from your own.</p>
+            <p id="5c" style="display:none;">Eat, work, sleep, repeat.</p>
+            <p id="5d" style="display:none;">That's the funny thing about perspective, isn't it?</p>
         </div>
         <div onclick="f()" id="6">
-            <p id="6a" style="display:none;">Second paragraph, first sentence.</p>
-            <p id="6b" style="display:none;">Second paragraph, second sentence.</p>
-            <p id="6c" style="display:none;">Second paragraph, third sentence.</p>
+            <p id="6a" style="display:none;">I can say it all looks the same, but there's no way to know for sure.</p>
+            <p id="6b" style="display:none;">When you experience life through your own unique lens, it's hard to find objective truth.</p>
+            <p id="6c" style="display:none;">Perhaps the search for objectivity is futile.</p>
+        </div>
+        <div onclick="g()" id="7">
+            <p id="7a" style="display:none;">Who's to say there's anything wrong with that?</p>
+            <p id="7b" style="display:none;">Life is a transient state, we can't find all the answers in a finite space of time.</p>
+            <p id="7c" style="display:none;">That shouldn't stop us from asking questions.</p>
+        </div>
+        <div onclick="h()" id="8">
+            <p id="8a" style="display:none;">Journey before destination. I read that in a book once.</p>
+            <p id="8b" style="display:none;">It's funny how much time you can spend reading other people's words,</p>
+            <p id="8c" style="display:none;">getting lost in the worlds they create with nothing more than ink and a dream.</p>
+            <p id="8d" style="display:none;">. . . That's the beauty of unique perspectives.</p>
+            <p id="8e" style="display:none;">If everthing in life was objective, it would be grey and dull.</p>
+        </div>
+        <div onclick="i()" id="9">
+            <p id="9a" style="display:none;">Perspective means you cannot communicate perfectly, but it also gives communication meaning.</p>
+            <p id="9b" style="display:none;">Imagine if everything had an objective meaning. If there was such thing as absolute truth.</p>
+            <p id="9c" style="display:none;">The world seems empty when you remove the need for any means of expression.</p>
+            <p id="9d" style="display:none;">After all, what is opinion in the face of objectivity?</p>
+            <p id="9e" style="display:none;">Art, music, beauty, passion; become pointless.</p>
         </div>
     </body>
 </html>
