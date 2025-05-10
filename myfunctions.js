@@ -24,6 +24,7 @@ https://stackoverflow.com/questions/6121203/how-to-do-fade-in-and-fade-out-with-
             element.style.filter = 'alpha(opacity=' + op * 100 + ")";
             op += op * 0.1;
             element.style.display = 'block';
+//            element.style.visibility = 'visible'
         }, 50);
     };
 };
@@ -47,4 +48,8 @@ https://stackoverflow.com/questions/6121203/how-to-do-fade-in-and-fade-out-with-
             element.ishover=false;
         }
     }
+}
+function MWget(str) {//Wrote a shorter function for this because I was using it so much.
+    element = document.getElementById(str);
+    return element;
 }
